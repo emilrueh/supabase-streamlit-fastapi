@@ -15,11 +15,6 @@ class User(BaseModel):
     password: str
 
 
-class Query(BaseModel):
-    table: str
-    column: str
-
-
 @router.post("/sign_up")
 async def sign_up(request: User):
     return await run_in_threadpool(sb.auth.sign_up, request.model_dump())
