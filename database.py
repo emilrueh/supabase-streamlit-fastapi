@@ -33,8 +33,3 @@ async def sign_in(request: User):
 @router.get("/sign_out")
 async def sign_out():
     return await run_in_threadpool(sb.auth.sign_out)
-
-
-@router.post("/fetch")
-async def fetch(request: Query):
-    return await run_in_threadpool(sb.table(request.table).select(request.column).execute)
